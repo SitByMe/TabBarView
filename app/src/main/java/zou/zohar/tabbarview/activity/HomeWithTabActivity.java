@@ -25,20 +25,20 @@ public class HomeWithTabActivity extends TabWithViewPagerBaseActivity {
 
     @Override
     public TabBarView.ItemStyle getItemStyle() {
-        return TabBarView.ItemStyle.ICON;
+        return TabBarView.ItemStyle.ICON_TEXT;
     }
 
     @Override
     public List<TabBarView.TabItemView> getTabViews() {
         List<TabBarView.TabItemView> tabItemViews = new ArrayList<>();
         tabItemViews.add(new TabBarView.TabItemView(this, "标题1", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         tabItemViews.add(new TabBarView.TabItemView(this, "标题2", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         tabItemViews.add(new TabBarView.TabItemView(this, "标题3", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         tabItemViews.add(new TabBarView.TabItemView(this, "标题4", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         return tabItemViews;
     }
 

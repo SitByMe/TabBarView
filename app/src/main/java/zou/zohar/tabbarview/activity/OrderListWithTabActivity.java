@@ -30,13 +30,13 @@ public class OrderListWithTabActivity extends TabWithViewPagerBaseActivity {
     public List<TabBarView.TabItemView> getTabViews() {
         List<TabBarView.TabItemView> tabItemViews = new ArrayList<>();
         tabItemViews.add(new TabBarView.TabItemView(this, "已完成", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         tabItemViews.add(new TabBarView.TabItemView(this, "未付款", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         tabItemViews.add(new TabBarView.TabItemView(this, "待收货", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         tabItemViews.add(new TabBarView.TabItemView(this, "待评价", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
         return tabItemViews;
     }
 
