@@ -22,6 +22,11 @@ public class OrderListWithTabActivity extends TabWithViewPagerBaseActivity {
     }
 
     @Override
+    public TabBarView.ItemStyle getItemStyle() {
+        return TabBarView.ItemStyle.TEXT;
+    }
+
+    @Override
     public List<TabBarView.TabItemView> getTabViews() {
         List<TabBarView.TabItemView> tabItemViews = new ArrayList<>();
         tabItemViews.add(new TabBarView.TabItemView(this, "已完成", R.color.colorPrimary,

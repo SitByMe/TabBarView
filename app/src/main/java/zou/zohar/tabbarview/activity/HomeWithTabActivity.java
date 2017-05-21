@@ -24,6 +24,11 @@ public class HomeWithTabActivity extends TabWithViewPagerBaseActivity {
     }
 
     @Override
+    public TabBarView.ItemStyle getItemStyle() {
+        return TabBarView.ItemStyle.ICON;
+    }
+
+    @Override
     public List<TabBarView.TabItemView> getTabViews() {
         List<TabBarView.TabItemView> tabItemViews = new ArrayList<>();
         tabItemViews.add(new TabBarView.TabItemView(this, "标题1", R.color.colorPrimary,

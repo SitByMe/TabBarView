@@ -39,6 +39,7 @@ public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
             }
         });
 
+        tabBarView.setItemStyle(getItemStyle());
         tabBarView.setTabItemViews(getTabViews(), getCenterView());
 
         tabBarView.setOnCheckedChangeListener(new TabBarView.OnCheckedChangeListener() {
@@ -65,6 +66,11 @@ public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * @return return the style of the tabItemView   ( ICON, TEXT, ICON_TEXT)
+     */
+    public abstract TabBarView.ItemStyle getItemStyle();
 
     public abstract List<TabBarView.TabItemView> getTabViews();
 

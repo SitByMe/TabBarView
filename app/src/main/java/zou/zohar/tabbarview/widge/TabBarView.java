@@ -31,6 +31,12 @@ public class TabBarView extends LinearLayout {
     private int childrenBottomMargin;
 
     /**
+     * the style of tabItemView
+     * the default is ICON_TEXT
+     */
+    private ItemStyle mItemStyle = ItemStyle.ICON_TEXT;
+
+    /**
      * record the new selected position
      */
     private int mCheckedPos = -1;
@@ -56,6 +62,10 @@ public class TabBarView extends LinearLayout {
 
     private void init() {
         mTabItemViewList = new ArrayList<>();
+    }
+
+    public void setItemStyle(ItemStyle itemStyle) {
+        this.mItemStyle = itemStyle;
     }
 
     /**
@@ -93,6 +103,8 @@ public class TabBarView extends LinearLayout {
             }
 
             final TabItemView tabItemView = mTabItemViewList.get(i);
+            tabItemView.setItemStyle(mItemStyle == ItemStyle.ICON || mItemStyle == ItemStyle.ICON_TEXT,
+                    mItemStyle == ItemStyle.TEXT || mItemStyle == ItemStyle.ICON_TEXT);
 
             this.addView(tabItemView);
 
@@ -175,6 +187,10 @@ public class TabBarView extends LinearLayout {
         void onCheckedChanged(TabBarView tabBarView, int checkedPos);
     }
 
+    public enum ItemStyle {
+        ICON, TEXT, ICON_TEXT
+    }
+
     /**
      * Item
      */
@@ -203,8 +219,8 @@ public class TabBarView extends LinearLayout {
         public int iconResDef;
         public int iconResChecked;
 
-        public TextView tvTitle;
         public ImageView ivIcon;
+        public TextView tvTitle;
 
         public TabItemView(Context context, String title, int colorDef, int colorChecked,
                            int iconResDef, int iconResChecked) {
@@ -219,8 +235,8 @@ public class TabBarView extends LinearLayout {
 
         public void init() {
             View view = LayoutInflater.from(super.getContext()).inflate(R.layout.view_tab_item, this);
-            tvTitle = (TextView) view.findViewById(R.id.tvTitle);
             ivIcon = (ImageView) view.findViewById(R.id.ivIcon);
+            tvTitle = (TextView) view.findViewById(R.id.tvTitle);
 
             LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
@@ -229,12 +245,17 @@ public class TabBarView extends LinearLayout {
             tvTitle.setText(title);
         }
 
+        protected void setItemStyle(boolean showIcon, boolean showTitle) {
+            ivIcon.setVisibility(showIcon ? VISIBLE : GONE);
+            tvTitle.setVisibility(showTitle ? VISIBLE : GONE);
+        }
+
         /**
          * set the status of this view
          */
         public void setStatus(int status) {
-            tvTitle.setTextColor(ContextCompat.getColor(super.getContext(), status == STATE_CHECKED ? colorChecked : colorDef));
             ivIcon.setImageResource(status == STATE_CHECKED ? iconResChecked : iconResDef);
+            tvTitle.setTextColor(ContextCompat.getColor(super.getContext(), status == STATE_CHECKED ? colorChecked : colorDef));
         }
     }
 }
