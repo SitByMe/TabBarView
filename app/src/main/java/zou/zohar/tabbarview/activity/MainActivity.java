@@ -23,4 +23,8 @@ public class MainActivity extends AppCompatActivity {
     public void startToHomeWithTabActivity(View view) {
         startActivity(new Intent(this, HomeWithTabActivity.class));
     }
+
+    public void startToOrderListWithTabActivity(View view) {
+        startActivity(new Intent(this, OrderListWithTabActivity.class));
+    }
 }
