@@ -2,7 +2,6 @@ package zou.zohar.tabbarview.activity;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,13 +13,28 @@ import java.util.List;
 import zou.zohar.tabbarview.R;
 import zou.zohar.tabbarview.widge.TabBarView;
 
+/**
+ * Created by zohar on 2017/5/21.
+ * 抽象的含TabBarView和ViewPager的Activity
+ * <p>
+ * abstract methods:
+ * 1. TabBarView.ItemStyle getItemStyle()   返回tabItemView的展示样式，返回null时为默认的ICON_TEXT
+ * 2. List<TabBarView.TabItemView> getTabViews()   提供tabItemView的集合，不可返回null
+ * 3. List<Fragment> getFragments()   提供Fragment的集合，不可返回null
+ * 4. View getCenterView()   提供一个中间按钮，可返回null
+ * 5. int getContentLayout()   提供xml布局文件
+ * <p>
+ * 注意事项：
+ * ① 2 和 3 分别提供的集合的长度必须一致
+ * ② 5 提供的xml布局文件中必须至少包含一个id为R.id.tabBarView的TabBarView和一个id为R.id.viewpager的ViewPager
+ */
 public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
 
     private TabBarView tabBarView;
     private ViewPager viewPager;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentLayout());
 
@@ -39,7 +53,7 @@ public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
             }
         });
 
-        tabBarView.setItemStyle(getItemStyle());
+        tabBarView.setItemStyle(getItemStyle() != null ? getItemStyle() : TabBarView.ItemStyle.ICON_TEXT);
         tabBarView.setTabItemViews(getTabViews(), getCenterView());
 
         tabBarView.setOnCheckedChangeListener(new TabBarView.OnCheckedChangeListener() {
@@ -68,7 +82,7 @@ public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
     }
 
     /**
-     * @return return the style of the tabItemView   ( ICON, TEXT, ICON_TEXT)
+     * @return 返回tabItemView的展示样式   ( ICON, TEXT, ICON_TEXT)
      */
     public abstract TabBarView.ItemStyle getItemStyle();
 
@@ -79,7 +93,7 @@ public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
     public abstract View getCenterView();
 
     /**
-     * @return return a layout res with R.id.tabBarViewBottom and R.id.viewPager
+     * @return 返回xml布局文件
      */
     public abstract
     @LayoutRes

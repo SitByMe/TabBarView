@@ -14,6 +14,10 @@ import zou.zohar.tabbarview.fragment.TabFragment3;
 import zou.zohar.tabbarview.fragment.TabFragment4;
 import zou.zohar.tabbarview.widge.TabBarView;
 
+/**
+ * Created by zohar on 2017/5/21.
+ * resLayout由getContentLayout()提供，不在onCreate()方法中调用setContentView()方法。
+ */
 public class OrderListWithTabActivity extends TabWithViewPagerBaseActivity {
 
     @Override

@@ -19,8 +19,19 @@ import java.util.List;
 import zou.zohar.tabbarview.R;
 
 /**
- * desc:
- * Created by becomeSimple on 2017/5/21.
+ * Created by zohar on 2017/5/21.
+ * desc:自定义的TabBarView（仿RadioGroup）
+ * <p>
+ * public methods:
+ * 1. setItemStyle(@NonNull ItemStyle itemStyle)   设置tabItemView的展示样式
+ * 2. void setTabItemViews(@NonNull List<TabItemView> tabItemViews)   设置tabItemView集合
+ * 3. void setTabItemViews(@NonNull List<TabItemView> tabItemViewList, View centerView)   设置tabItemView集合和centerView
+ * 4. void check(int position)   切换选中的tabItemView
+ * 5. TabItemView getCheckedTabItemView()   返回当前选中的tabItemView
+ * 6. void setOnCheckedChangeListener(OnCheckedChangeListener listener)   设置切换tabItemView时的回调接口
+ * <p>
+ * 注意事项：
+ * setTabItemViews() 方法不可重复调用
  */
 public class TabBarView extends LinearLayout {
 
@@ -37,7 +48,7 @@ public class TabBarView extends LinearLayout {
     private ItemStyle mItemStyle = ItemStyle.ICON_TEXT;
 
     /**
-     * record the new selected position
+     * record the new checked position
      */
     private int mCheckedPos = -1;
 
@@ -64,7 +75,7 @@ public class TabBarView extends LinearLayout {
         mTabItemViewList = new ArrayList<>();
     }
 
-    public void setItemStyle(ItemStyle itemStyle) {
+    public void setItemStyle(@NonNull ItemStyle itemStyle) {
         this.mItemStyle = itemStyle;
     }
 
@@ -85,7 +96,7 @@ public class TabBarView extends LinearLayout {
 
         mTabItemViewList.addAll(tabItemViewList);
 
-        if (mTabItemViewList.size() < 1) {
+        if (mTabItemViewList.size() < 2) {
             throw new RuntimeException("The length of mTabItemViewList must not be less than 2!");
         }
 
