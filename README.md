@@ -45,8 +45,25 @@ public class TabBarView extends LinearLayout</bar>
 | TabItemView   |`getCheckedTabItemView()`</br>返回当前选中的tabItemView|
 | void          |`setOnCheckedChangeListener(OnCheckedChangeListener listener)`</br>设置切换tabItemView时的回调接口|
 
-**注意事项：</br>
-setTabItemViews() 方法不可重复调用**
+**注意事项：**</br>
+1. setTabItemViews() 方法不可重复调用
+2. 如果需要有一个子超出父布局位置限制的centerView的话，需要在TabBarView的父布局xml中添加属性 android:clipChildren="false"
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_home_with_tab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <zou.zohar.tabbarview.widge.TabBarView
+        android:id="@+id/tabBarView"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        tools:childrenBottomMargin="40" />
+</RelativeLayout>
+```
 
 ---
 ### TabWithViewPagerBaseActivity.java
