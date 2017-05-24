@@ -23,7 +23,7 @@ import zou.zohar.tabbarview.R;
  * desc:自定义的TabBarView（仿RadioGroup）
  * <p>
  * public methods:
- * 1. setItemStyle(@NonNull ItemStyle itemStyle)   设置tabItemView的展示样式
+ * 1. void setItemStyle(@NonNull ItemStyle itemStyle)   设置tabItemView的展示样式
  * 2. void setTabItemViews(@NonNull List<TabItemView> tabItemViews)   设置tabItemView集合
  * 3. void setTabItemViews(@NonNull List<TabItemView> tabItemViewList, View centerView)   设置tabItemView集合和centerView
  * 4. void check(int position)   切换选中的tabItemView
@@ -31,29 +31,30 @@ import zou.zohar.tabbarview.R;
  * 6. void setOnCheckedChangeListener(OnCheckedChangeListener listener)   设置切换tabItemView时的回调接口
  * <p>
  * 注意事项：
- * setTabItemViews() 方法不可重复调用
+ * ① setTabItemViews() 方法不可重复调用
+ * ② 如果需要有一个子超出父布局位置限制的centerView的话，需要在TabBarView的父布局xml中添加属性 android:clipChildren="false"
  */
 public class TabBarView extends LinearLayout {
 
     /**
      * attribute
-     * centerView's bottomMargin
+     * centerView的bottomMargin
      */
     private int childrenBottomMargin;
 
     /**
-     * the style of tabItemView
-     * the default is ICON_TEXT
+     * tabItemView的展示样式
+     * 默认为 ICON_TEXT
      */
     private ItemStyle mItemStyle = ItemStyle.ICON_TEXT;
 
     /**
-     * record the new checked position
+     * 最新选择的item的position，-1表示没有选择任何一个
      */
     private int mCheckedPos = -1;
 
     /**
-     * all tabItemViews
+     * tabItemViews集合
      */
     private List<TabItemView> mTabItemViewList;
 
@@ -79,17 +80,14 @@ public class TabBarView extends LinearLayout {
         this.mItemStyle = itemStyle;
     }
 
-    /**
-     * set tabItemViews
-     */
     public void setTabItemViews(@NonNull List<TabItemView> tabItemViews) {
         setTabItemViews(tabItemViews, null);
     }
 
-    /**
-     * set tabItemViews and centerView
-     */
     public void setTabItemViews(@NonNull List<TabItemView> tabItemViewList, View centerView) {
+        /**
+         * 不能重复设置mTabItemViewList
+         */
         if (mTabItemViewList.size() != 0) {
             throw new RuntimeException("mTabItemViewList cannot be repeated!");
         }
@@ -103,7 +101,7 @@ public class TabBarView extends LinearLayout {
         for (int i = 0; i < mTabItemViewList.size(); i++) {
             if (centerView != null && i == mTabItemViewList.size() / 2) {
                 /**
-                 * setting childrenBottomMargin for centerView
+                 * 给centerView设置childrenBottomMargin属性
                  */
                 LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 layoutParams.height = this.getLayoutParams().height + childrenBottomMargin;
@@ -132,21 +130,22 @@ public class TabBarView extends LinearLayout {
         }
 
         /**
-         * initialize all Views
+         * 舒适化所有的tabItemView
          */
         for (TabItemView tab : mTabItemViewList) {
             tab.setStatus(TabItemView.STATE_DEFAULT);
         }
 
+        /**
+         * 默认选中第一个
+         */
         check(0);
     }
 
     /**
-     * <p>Sets the selection to the tabItemView whose identifier is passed in
-     * parameter. Using -1 as the selection identifier clears the selection;
-     * such an operation is equivalent to invoking.</p>
+     * 通过position的选择设置tabItemView的标识，使用-1作为清除标识的选择
      *
-     * @param position the position of the tabItemView to select in this group
+     * @param position tabItemView在TabBarView中的序号
      */
     public void check(int position) {
         if (position != -1 && position == mCheckedPos) {
@@ -178,8 +177,7 @@ public class TabBarView extends LinearLayout {
     private OnCheckedChangeListener mOnCheckedChangeListener;
 
     /**
-     * <p>Register a callback to be invoked when the checked tab item
-     * changes in this view.</p>
+     * 注册一个回调函数，用来检查选项卡的选项更改
      *
      * @param listener the callback to call on checked state change
      */
@@ -203,29 +201,29 @@ public class TabBarView extends LinearLayout {
     }
 
     /**
-     * Item
+     * ItemView
      */
     public static class TabItemView extends LinearLayout {
 
         /**
-         * STATUS: checked and default
+         * 状态: checked and default
          */
         public final static int STATE_DEFAULT = 1;
         public final static int STATE_CHECKED = 2;
 
         /**
-         * title of the tabItemView
+         * 标题：tabItemView上显示的文字
          */
         public String title;
 
         /**
-         * color res of the title: checked and default
+         * 标题的颜色: checked and default
          */
         public int colorDef;
         public int colorChecked;
 
         /**
-         * image res of the icon: checked and default
+         * 图标: checked and default
          */
         public int iconResDef;
         public int iconResChecked;
@@ -262,7 +260,7 @@ public class TabBarView extends LinearLayout {
         }
 
         /**
-         * set the status of this view
+         * 设置itemView的状态
          */
         public void setStatus(int status) {
             ivIcon.setImageResource(status == STATE_CHECKED ? iconResChecked : iconResDef);

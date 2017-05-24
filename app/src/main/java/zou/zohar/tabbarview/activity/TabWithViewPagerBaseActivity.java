@@ -25,8 +25,9 @@ import zou.zohar.tabbarview.widge.TabBarView;
  * 5. int getContentLayout()   提供xml布局文件
  * <p>
  * 注意事项：
- * ① 2 和 3 分别提供的集合的长度必须一致
- * ② 5 提供的xml布局文件中必须至少包含一个id为R.id.tabBarView的TabBarView和一个id为R.id.viewpager的ViewPager
+ * ① 你的Activity的onCreat()方法中不能调用setContentView(int resLayout)方法，xmlLayout必须由getContentLayout()方法提供
+ * ② 由getContentLayout()方法提供的xml布局文件中必须得至少包含一个id为R.id.tabBarView的TabBarView和一个id为R.id.viewpager的ViewPager
+ * ③ getTabViews()和getFragments()分别提供的集合的长度必须一致
  */
 public abstract class TabWithViewPagerBaseActivity extends AppCompatActivity {
 
