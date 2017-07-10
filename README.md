@@ -1,14 +1,14 @@
 # TabBarView
 自定义TabBarView（仿RadioGroup），可设置展示样式，快速实现Tab+ViewPager的Activity
 
-使用方法：</br>
+使用方法一：</br>
 1. 将项目下载到本地
   
   ```
   git clone https://github.com/SitByMe/TabBarView.git
   ```
 2. 将项目添加进您自己的项目中
-3. 新建一个Activity继承至TabWithViewPagerBaseActivity，然后重写几个抽象方法：</br>
+3. 新建一个Activity继承至TabWithViewPagerBaseActivity 或 新建一个Fragment继承至TabWithViewPagerBaseFragment，然后重写几个抽象方法：</br>
   ```
   public abstract TabBarView.ItemStyle getItemStyle();
 
@@ -19,6 +19,34 @@
   public abstract View getCenterView();
 
   public abstract @LayoutRes int getContentLayout();
+  ```
+
+使用方法二：</br>
+1. 复制以下文件到你的项目中
+  ```
+  zou.zohar.tabbarview.base.TabBarView
+  zou.zohar.tabbarview.base.TabWithViewPagerBaseActivity
+  zou.zohar.tabbarview.base.TabWithViewPagerBaseFragment
+  R.layout.view_tab_item
+  ```
+2. 添加declare-styleable
+  ```
+  <declare-styleable name="TabItemView">
+      <attr name="childrenBottomMargin" format="integer" />
+  </declare-styleable>
+  ```
+3. 新建一个Activity继承至TabWithViewPagerBaseActivity 或 新建一个Fragment继承至TabWithViewPagerBaseFragment，然后重写几个抽象方法：</br>
+  ```
+  public abstract TabBarView.ItemStyle getItemStyle();
+
+  public abstract List<TabBarView.TabItemView> getTabViews();
+
+  public abstract List<Fragment> getFragments();
+
+  public abstract View getCenterView();
+
+  public abstract @LayoutRes int getContentLayout();
+
   ```
 
 ---
