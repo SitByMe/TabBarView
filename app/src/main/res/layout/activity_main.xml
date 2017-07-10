@@ -28,4 +28,12 @@
         android:onClick="startToOrderListWithTabActivity"
         android:text="带ViewPager和Tab的订单列表页面"
         android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:onClick="startToUseInFragmentActivity"
+        android:text="TabWithViewPagerBaseFragment的使用"
+        android:textAllCaps="false" />
 </LinearLayout>

@@ -1,4 +1,4 @@
-package zou.zohar.tabbarview.activity;
+package zou.zohar.tabbarview.example.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zou.zohar.tabbarview.R;
-import zou.zohar.tabbarview.fragment.TabFragment1;
-import zou.zohar.tabbarview.fragment.TabFragment2;
-import zou.zohar.tabbarview.fragment.TabFragment3;
-import zou.zohar.tabbarview.fragment.TabFragment4;
-import zou.zohar.tabbarview.widge.TabBarView;
+import zou.zohar.tabbarview.base.TabWithViewPagerBaseActivity;
+import zou.zohar.tabbarview.example.fragment.TabFragment1;
+import zou.zohar.tabbarview.example.fragment.TabFragment2;
+import zou.zohar.tabbarview.example.fragment.TabFragment3;
+import zou.zohar.tabbarview.example.fragment.TabFragment4;
+import zou.zohar.tabbarview.base.TabBarView;
 
 /**
  * Created by zohar on 2017/5/21.
@@ -34,13 +35,13 @@ public class OrderListWithTabActivity extends TabWithViewPagerBaseActivity {
     public List<TabBarView.TabItemView> getTabViews() {
         List<TabBarView.TabItemView> tabItemViews = new ArrayList<>();
         tabItemViews.add(new TabBarView.TabItemView(this, "已完成", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
         tabItemViews.add(new TabBarView.TabItemView(this, "未付款", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
         tabItemViews.add(new TabBarView.TabItemView(this, "待收货", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
         tabItemViews.add(new TabBarView.TabItemView(this, "待评价", R.color.colorPrimary,
-                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_deep));
+                R.color.colorAccent, R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
         return tabItemViews;
     }
 

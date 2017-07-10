@@ -1,4 +1,4 @@
-package zou.zohar.tabbarview.widge;
+package zou.zohar.tabbarview.base;
 
 import android.content.Context;
 import android.content.res.TypedArray;

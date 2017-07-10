@@ -1,4 +1,4 @@
-package zou.zohar.tabbarview.activity;
+package zou.zohar.tabbarview.example.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,5 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startToOrderListWithTabActivity(View view) {
         startActivity(new Intent(this, OrderListWithTabActivity.class));
+    }
+
+    public void startToUseInFragmentActivity(View view) {
+        startActivity(new Intent(this, UseInFragmentActivity.class));
     }
 }

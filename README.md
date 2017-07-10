@@ -57,7 +57,7 @@ public class TabBarView extends LinearLayout</bar>
     android:layout_height="match_parent"
     android:clipChildren="false">
 
-    <zou.zohar.tabbarview.widge.TabBarView
+    <zou.zohar.tabbarview.base.TabBarView
         android:id="@+id/tabBarView"
         android:layout_width="match_parent"
         android:layout_height="46dp"

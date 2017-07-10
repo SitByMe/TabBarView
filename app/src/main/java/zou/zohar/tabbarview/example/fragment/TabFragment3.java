@@ -1,4 +1,4 @@
-package zou.zohar.tabbarview.fragment;
+package zou.zohar.tabbarview.example.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import zou.zohar.tabbarview.R;
 
-public class TabFragment4 extends Fragment {
+public class TabFragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_tab, null);
         TextView tv = (TextView) inflate.findViewById(R.id.txt);
-        tv.setBackgroundColor(Color.BLUE);
+        tv.setBackgroundColor(Color.GREEN);
         return inflate;
     }
 }

@@ -1,4 +1,4 @@
-package zou.zohar.tabbarview.fragment;
+package zou.zohar.tabbarview.example.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;

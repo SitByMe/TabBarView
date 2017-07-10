@@ -1,4 +1,4 @@
-package zou.zohar.tabbarview.activity;
+package zou.zohar.tabbarview.base;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -11,7 +11,6 @@ import android.view.View;
 import java.util.List;
 
 import zou.zohar.tabbarview.R;
-import zou.zohar.tabbarview.widge.TabBarView;
 
 /**
  * Created by zohar on 2017/5/21.
